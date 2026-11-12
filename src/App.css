@@ -1,0 +1,272 @@
+:root {
+  --feltro: #1d4a3a;
+  --feltro-escuro: #143528;
+  --papel: #f6efdc;
+  --tinta: #1b1b1f;
+  --vermelho: #b3261e;
+  --ouro: #e0a82e;
+  color-scheme: dark;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: block;
+  background: var(--feltro-escuro);
+  color: var(--papel);
+  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+}
+#root {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.mesa {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+header small {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+.placar {
+  display: flex;
+  gap: 8px;
+}
+.placar > div {
+  background: var(--feltro);
+  border: 2px solid var(--ouro);
+  border-radius: 10px;
+  padding: 6px 14px;
+  text-align: center;
+  min-width: 64px;
+}
+.placar .valor {
+  border-color: var(--papel);
+}
+.placar strong {
+  font-size: 1.7rem;
+}
+.vira {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.vazas {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.vazas i {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--papel);
+  display: block;
+}
+.vazas i.nos {
+  background: #3ddc84;
+  border-color: #3ddc84;
+}
+.vazas i.eles {
+  background: var(--vermelho);
+  border-color: var(--vermelho);
+}
+.vazas i.emp {
+  background: #888;
+  border-color: #888;
+}
+
+.campo {
+  flex: 1;
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--feltro),
+    var(--feltro-escuro) 120%
+  );
+  border: 3px solid #0d241b;
+  border-radius: 28px;
+  padding: 14px;
+  display: grid;
+  grid-template: 'x top x2' auto 'left centro right' 1fr 'y bottom y2' auto / 1fr 2fr 1fr;
+  gap: 8px;
+  align-items: center;
+  justify-items: center;
+  min-height: 420px;
+}
+.top {
+  grid-area: top;
+}
+.left {
+  grid-area: left;
+}
+.right {
+  grid-area: right;
+}
+.bottom {
+  grid-area: bottom;
+}
+.centro {
+  grid-area: centro;
+}
+
+.seat {
+  text-align: center;
+  padding: 6px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+}
+.seat.active {
+  border-color: var(--ouro);
+}
+.name {
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+}
+.hand {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+.left .hand,
+.right .hand {
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.left .hand .card.small,
+.right .hand .card.small {
+  margin-bottom: -30px;
+}
+
+.centro {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 90px;
+}
+.jogada {
+  text-align: center;
+}
+.jogada small {
+  display: block;
+  font-size: 0.65rem;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+.card {
+  width: 62px;
+  height: 88px;
+  background: var(--papel);
+  color: var(--tinta);
+  border: 1px solid #00000055;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  line-height: 1.1;
+  padding: 0;
+  cursor: default;
+  box-shadow: 0 2px 5px #0006;
+  transition: transform 0.12s;
+}
+.card b {
+  font-size: 1.5rem;
+}
+.card span {
+  font-size: 1.4rem;
+}
+.card.small {
+  width: 44px;
+  height: 62px;
+}
+.card.small b {
+  font-size: 1.05rem;
+}
+.card.small span {
+  font-size: 1rem;
+}
+.card.red {
+  color: var(--vermelho);
+}
+.card.manilha {
+  outline: 3px solid var(--ouro);
+}
+.card.back {
+  background: repeating-linear-gradient(45deg, #7b2d26 0 6px, #5e201b 6px 12px);
+  border: 3px solid var(--papel);
+}
+.card:not(:disabled) {
+  cursor: pointer;
+}
+.card:not(:disabled):hover {
+  transform: translateY(-8px);
+}
+.card:disabled {
+  opacity: 1;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+.log {
+  margin: 0;
+  min-height: 1.4em;
+  text-align: center;
+}
+.acoes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.acoes button {
+  background: var(--ouro);
+  color: var(--tinta);
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.acoes button.sec {
+  background: transparent;
+  color: var(--papel);
+  border: 2px solid var(--papel);
+}
+button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
